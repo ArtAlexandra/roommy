@@ -19,12 +19,11 @@ const create_shop_dto_1 = require("./dto/create-shop.dto");
 const platform_express_1 = require("@nestjs/platform-express");
 const multer_1 = require("multer");
 const path = require("path");
-const uuid_1 = require("uuid");
 exports.storage = {
     storage: (0, multer_1.diskStorage)({
-        destination: './uploads/profileimages',
+        destination: '../front/public/image/shops',
         filename: (req, file, cb) => {
-            const filename = path.parse(file.originalname).name.replace(/\s/g, '') + (0, uuid_1.v4)();
+            const filename = path.parse(file.originalname).name.replace(/\s/g, '');
             const extension = path.parse(file.originalname).ext;
             cb(null, `${filename}${extension}`);
         }

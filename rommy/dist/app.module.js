@@ -12,6 +12,8 @@ const users_module_1 = require("./users/users.module");
 const users_model_1 = require("./users/users.model");
 const sequelize_1 = require("@nestjs/sequelize");
 const shops_module_1 = require("./shops/shops.module");
+const type_clothes_module_1 = require("./type-clothes/type-clothes.module");
+const goods_module_1 = require("./goods/goods.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -31,7 +33,9 @@ exports.AppModule = AppModule = __decorate([
                 autoLoadModels: true,
             }),
             users_module_1.UsersModule,
-            shops_module_1.ShopsModule
+            shops_module_1.ShopsModule,
+            type_clothes_module_1.TypeClothesModule,
+            goods_module_1.GoodsModule
         ],
     })
 ], AppModule);

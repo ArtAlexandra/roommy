@@ -20,7 +20,7 @@ export class ShopsService {
       }
     
       findAll(): Promise<Shop[]> {
-        return this.shopModel.findAll();
+        return  this.shopModel.findAll();
       }
       async create(
         createShopDto: CreateShopDto, image: string

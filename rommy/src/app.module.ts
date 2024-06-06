@@ -4,6 +4,8 @@ import { User } from './users/users.model';
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { ShopsModule } from './shops/shops.module';
+import { TypeClothesModule } from './type-clothes/type-clothes.module';
+import { GoodsModule } from './goods/goods.module';
 
 @Module({
   controllers: [],
@@ -27,7 +29,9 @@ import { ShopsModule } from './shops/shops.module';
       
       }),
     UsersModule,
-    ShopsModule
+    ShopsModule,
+    TypeClothesModule,
+    GoodsModule
   ],
 })
 export class AppModule {}
