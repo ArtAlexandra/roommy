@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Shops } from "../model/Shops";
 import axios from "axios";
 
-const Card = ()=>{
+const Shop = ()=>{
   const { id } = useParams<string>();
   const [shop, setShop] = useState<Shops>()
   useEffect(()=>{
@@ -24,11 +24,13 @@ const Card = ()=>{
         <div>
            
             <p>{shop?.name}</p>
-            <p>{shop?.address}</p>
+            <p>{shop?.city}, {shop?.address}</p>
             <p>{shop?.email}</p>
             <p>{shop?.phone}</p>
+            <p>{shop?.timeWork}</p>
 
+            <img src={`/image/shops/${shop?.image}`} alt={shop?.name}/>
         </div>
     )
 }
-export default Card;
+export default Shop;

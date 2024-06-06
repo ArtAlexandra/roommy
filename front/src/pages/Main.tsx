@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Shops } from "../model/Shops";
+import { useNavigate } from "react-router-dom";
 
-interface Shop{
-    id:number;
-    name:string;
-    password:string;
-    address:string
-    owner:string;
-    phone:string;
-    email:string;
-    image:string;
-    city:string;
-    timeWork:string;
-    createdAt:string;
-    updatedAt:string;
-}
 const Main = ()=>{
     const [search, setSearch] = useState<string>('')
-    const [shopCity, setShopCity] =  useState<Shop[]|null>()
+    const [shopCity, setShopCity] =  useState<Shops[]|null>()
+    const navigate = useNavigate()
+    const [shops, setShops] = useState<Shops[]|null>(null)
+    useEffect(()=>{
+        axios.get('/shops/get-all')
+        .then(response => {
+           console.log(response.data)
+           setShops(response.data)
+           
+        })
+        .catch(error => {
+           
+            console.error('There was an error!', error);
+        });
+    }, [])
     const SearchShop =(e:string)=>{
         setSearch(e)
         if(e.length >=3){
@@ -40,6 +42,23 @@ const Main = ()=>{
                     <p key={item.id}>{item.name} {item.address}</p>
                 )
             })}
+
+
+            {!shops && <p>Ой, пока нет ни одного магазина</p>}
+            {shops && 
+            <div>
+                {shops.map((shop)=>{
+                    return(
+                        <div key={shop.id} onClick={()=>navigate(`/shop/${shop.id}`)}>
+                            <p>{shop.name}</p>
+                            <p>{shop.address}</p>
+                            <img src={`image/shops/${shop.image}`} alt={shop.name}/>
+                        </div>
+                    )
+                })}
+
+            </div>
+            }
         </div>
     )
 }

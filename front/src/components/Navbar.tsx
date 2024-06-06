@@ -19,7 +19,7 @@ const Navbar = ()=>{
         <Button type="primary" style={{ marginRight: '10px' }}>Sign in</Button>
         <Button onClick={()=>navigate('/login')}>Sign up</Button>
         
-       <img src='come.svg' alt="come"/>
+       <img src='/come.svg' alt="come"/>
 
       </div>
     </Header>

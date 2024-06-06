@@ -14,6 +14,7 @@ import ErrorURL from './pages/ErrorURL';
 import Login from './pages/Login';
 import Main from './pages/Main';
 import Registration from './pages/Registration';
+import Shop from './pages/Shop';
 
 const Layout = () => {
   return (
@@ -37,7 +38,15 @@ const router = createBrowserRouter([
       {
         path:"/main",
         element:<Main/>
-      }
+      },
+      {
+        path:"/card/:id",
+        element: <Card/>
+      },
+      {
+        path:"/shop/:id",
+        element: <Shop/>
+      },
     ]
   },
     {
@@ -48,6 +57,7 @@ const router = createBrowserRouter([
       path: "/registration",
       element: <Registration/>
     },
+    
     {
       path: "*",
       element: <ErrorURL/>
